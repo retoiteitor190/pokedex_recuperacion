@@ -14,6 +14,14 @@ function App() {
     return Math.floor(Math.random()* (max-min)+min);
   };
 
+  const siguiente=(min=1,max=600)=>{
+    if(pokemon.id >= max){
+      return pokemon.id = min;
+    }else{
+      return pokemon.id + 1 ;
+    }
+  };
+
   useEffect(()=>{
     console.log({pokemon});
   },[pokemon]);
@@ -33,7 +41,7 @@ function App() {
         <div className='flex-continer '>
           <button className='button'>Antes</button>
           <button className='button' onClick={()=>fetchPokemon(getRandomInt())}>Random</button>
-          <button className='button'>Siguiente</button>
+          <button className='button' onClick={()=>fetchPokemon(siguiente())}>Siguiente</button>
         </div>
       </header>
     </div>
