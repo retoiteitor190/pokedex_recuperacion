@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -22,13 +21,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className='flex-container'>
-        <img src={pokemon?.sprites?.front_default} className="poke-image" alt="logo" />
-        <img src={pokemon?.sprites?.back_default} className="poke-image" alt="logo" />
+        <img src={pokemon?.sprites?.front_default ?? "https://pngimg.com/uploads/pokeball/pokeball_PNG26.png"} className="poke-image" alt="logo" />
+        <img src={pokemon?.sprites?.back_default ?? "https://i.pinimg.com/originals/95/fc/30/95fc304b40461a9922bd1d3aff885496.png"} className="poke-image" alt="logo" />
         </div>
         <h3>Nombre del pokemon:</h3>
         <p>
          {pokemon.name ?? "Pokemon no seleccionado"}
         </p>
+        <h4>Pokemon ID:</h4>
+        <p>{pokemon.id ?? "Pokemon no seleccionado"}</p>
         <div className='flex-continer '>
           <button className='button'>Antes</button>
           <button className='button' onClick={()=>fetchPokemon(getRandomInt())}>Random</button>
