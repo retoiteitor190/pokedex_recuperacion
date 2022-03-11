@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const[pokemon,setPokemon]= useState({});
+
+  const [busqueda, setBusqueda]= useState("");
+
   const fetchPokemon=(id)=>{
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     .then((response)=>response.json())
@@ -20,6 +23,14 @@ function App() {
     }else{
       return pokemon.id + 1 ;
     }
+  };
+
+  const regresar=(min=1,max=600)=>{
+    if(pokemon.id   <=min){
+      return pokemon.id=max;
+      }else {
+        return pokemon.id - 1 ;
+      }
   };
 
   useEffect(()=>{
@@ -39,7 +50,7 @@ function App() {
         <h4>Pokemon ID:</h4>
         <p>{pokemon.id ?? "Pokemon no seleccionado"}</p>
         <div className='flex-continer '>
-          <button className='button'>Antes</button>
+          <button className='button' onClick={()=>fetchPokemon(regresar())}>Antes</button>
           <button className='button' onClick={()=>fetchPokemon(getRandomInt())}>Random</button>
           <button className='button' onClick={()=>fetchPokemon(siguiente())}>Siguiente</button>
         </div>
