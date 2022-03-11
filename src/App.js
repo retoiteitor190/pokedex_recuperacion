@@ -6,22 +6,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
+        <div className='flex-container'>
         <img src={logo} className="poke-image" alt="logo" />
         <img src={logo} className="poke-image" alt="logo" />
         </div>
-        
         <p>
-         
+         Nombre
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className='flex-continer '>
+          <button className='button'>Antes</button>
+          <button className='button'>Random</button>
+          <button className='button'>Siguiente</button>
+        </div>
       </header>
     </div>
   );
