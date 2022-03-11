@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .flex-container{
@@ -17,6 +18,15 @@
   border: none;
   border-radius: 10px;
   font-size: 20px;
+}
+
+.containerInput {
+  background: silver;
+  border: 5px solid #393939;
+  border-radius: 10px 10px 10px 10px;
+  color: #393939;
+  font-size: 15px;
+  padding: 10px;
 }
 
 .button{
@@ -56,6 +66,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/pokemon-mas-populares-gengar-1561474289.jpg?crop=1.00xw:0.892xh;0,0.0431xh&resize=480:*");
+  background-size: cover;
+  background-repeat: none;
+  min-height: 100vh;  
+  display: flex;
 }
 
 .App-link {
