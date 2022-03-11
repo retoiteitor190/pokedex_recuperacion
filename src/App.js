@@ -13,7 +13,7 @@ function App() {
     .then((data)=>setPokemon(data));
   };
 
-  fetchPokemonbyname = () => {
+  const fetchPokemonbyname = () => {
     fetch(`http://pokeapi.co/api/v2/pokemon/${busqueda}`)
     .then((response) => response.json())
     .then((data) => setPokemon(data));
