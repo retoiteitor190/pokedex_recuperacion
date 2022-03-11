@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import { useEffect, useState } from 'react';
+import Popup from "./components/popup.js"
 
 function App() {
   const[pokemon,setPokemon]= useState({});
 
   const [busqueda, setBusqueda]= useState("");
+
+  const [buttonPopup,setButtonPopup]= useState(false);
 
   const fetchPokemon=(id)=>{
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
@@ -87,7 +90,19 @@ function App() {
               Siguiente
             </button>
           )}
+          <button className='button' onClick={()=>setButtonPopup(true)}>habilidades</button>
         </div>
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <h3>Habilidades</h3>
+          <ul className='text'>
+             {pokemon?.abilities?.map((ability)=>(
+               <li key={ability.ability.id}>
+                 {ability.ability.name}
+               </li>
+             ))
+             }
+          </ul>
+      </Popup>
         <div className="containerInput">
         <input
           value={busqueda}
