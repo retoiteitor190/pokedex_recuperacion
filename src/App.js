@@ -39,12 +39,20 @@ function App() {
       }
   };
 
+  const onChange= async e =>{
+    e.persist();
+    setBusqueda(e.target.value);
+  };
+
   useEffect(()=>{
     console.log({pokemon});
   },[pokemon]);
   return (
     <div className="App">
       <header className="App-header">
+        <div className='Git-Enlace'>
+          <a className='alingCentral' href='https://github.com/retoiteitor190/pokedex_recuperacion.git'> Proyecto Git Alejandro Ruíz Moreno</a>
+        </div>
         <div className='flex-container'>
         <img src={pokemon?.sprites?.front_default ?? "https://pngimg.com/uploads/pokeball/pokeball_PNG26.png"} className="poke-image" alt="logo" />
         <img src={pokemon?.sprites?.back_default ?? "https://i.pinimg.com/originals/95/fc/30/95fc304b40461a9922bd1d3aff885496.png"} className="poke-image" alt="logo" />
@@ -60,6 +68,14 @@ function App() {
           <button className='button' onClick={()=>fetchPokemon(getRandomInt())}>Random</button>
           <button className='button' onClick={()=>fetchPokemon(siguiente())}>Siguiente</button>
         </div>
+        <div className="containerInput">
+        <input
+          value={busqueda}
+          placeholder=" Nombre de Pokemon"
+          onChange={onChange}
+        /><br></br>
+        <button className="botonBusq"  onClick={() => fetchPokemonbyname()}>Buscar</button>
+      </div>
       </header>
     </div>
   );
