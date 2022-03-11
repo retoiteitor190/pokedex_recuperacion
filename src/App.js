@@ -13,6 +13,12 @@ function App() {
     .then((data)=>setPokemon(data));
   };
 
+  fetchPokemonbyname = () => {
+    fetch(`http://pokeapi.co/api/v2/pokemon/${busqueda}`)
+    .then((response) => response.json())
+    .then((data) => setPokemon(data));
+  };
+
   const getRandomInt=(min= 1,max=600)=>{
     return Math.floor(Math.random()* (max-min)+min);
   };
