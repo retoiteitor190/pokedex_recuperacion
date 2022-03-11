@@ -14,9 +14,10 @@ function App() {
   };
 
   const fetchPokemonbyname = () => {
-    fetch(`http://pokeapi.co/api/v2/pokemon/${busqueda}`)
-    .then((response) => response.json())
-    .then((data) => setPokemon(data));
+    fetch(`https://pokeapi.co/api/v2/pokemon/${busqueda}`)
+      .then((response) => response.json())
+      .then((data) => setPokemon(data))
+      ;
   };
 
   const getRandomInt=(min= 1,max=600)=>{
@@ -64,9 +65,28 @@ function App() {
         <h4>Pokemon ID:</h4>
         <p>{pokemon.id ?? "Pokemon no seleccionado"}</p>
         <div className='flex-continer '>
-          <button className='button' onClick={()=>fetchPokemon(regresar())}>Antes</button>
+        {pokemon.id ? (
+            <><button
+                className="button"
+                onClick={() => fetchPokemon(regresar())}
+              >
+                Antes
+              </button>{" "}
+            </>
+          ) : (
+            <button className="button" onClick={() => fetchPokemon(600)}>
+              Antes
+            </button>
+          )}
+          
           <button className='button' onClick={()=>fetchPokemon(getRandomInt())}>Random</button>
-          <button className='button' onClick={()=>fetchPokemon(siguiente())}>Siguiente</button>
+          {pokemon.id ? (<><button className="button" onClick={() => fetchPokemon(siguiente())}>Siguiente</button>{" "}
+            </>
+          ) : (
+            <button className="button" onClick={() => fetchPokemon(1)}>
+              Siguiente
+            </button>
+          )}
         </div>
         <div className="containerInput">
         <input
